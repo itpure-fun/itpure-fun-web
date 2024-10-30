@@ -3,19 +3,19 @@ import { goto } from '~/utils/url'
 const productStore = useProductStore()
 const tagStore = useTagStore()
 
-const showType = ref('all')
+// const showType = ref('all')
 
 
-const selectOptions = [
-  {
-    value: 1,
-    label: '最新收录',
-  },
-  {
-    value: 2,
-    label: '热门产品',
-  },
-]
+// const selectOptions = [
+//   {
+//     value: 1,
+//     label: '最新收录',
+//   },
+//   {
+//     value: 2,
+//     label: '热门产品',
+//   },
+// ]
 
 
 const tagId = ref(0)
@@ -79,21 +79,6 @@ defineExpose({
 <template>
   <div class="p-5 mt-5 flex flex-col items-center">
     <div class="flex items-center ">
-      <!-- <el-select
-        v-model="selectSort"
-        placeholder="Select"
-        style="width: 100px; min-width: 100px;"
-        @change="changeSelect"
-      >
-        <el-option
-          v-for="item in selectOptions"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        />
-      </el-select> -->
-
-      <!-- <el-scrollbar> -->
         <div class="flex flex-wrap">
           <div 
             @click="clickTag(0)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap" 
@@ -108,7 +93,6 @@ defineExpose({
             {{ item.title }}
           </div>
         </div>
-      <!-- </el-scrollbar> -->
     </div>
 
 

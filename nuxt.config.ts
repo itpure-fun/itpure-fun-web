@@ -13,8 +13,8 @@ export default defineNuxtConfig({
 
     //公开，客户端也能获取到
     public: {
-      baseURL: 'http://127.0.0.1:9501',
-      // baseURL: 'https://api.itpure.fun',
+      // baseURL: 'http://127.0.0.1:9501',
+      baseURL: 'https://www.itpure.fun/api',
 
       title: 'ITPURE.FUN',
     }
