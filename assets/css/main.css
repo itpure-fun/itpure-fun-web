@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --base-white: #fff;
+  --base-gray: #fff;
+  --base-black: #444;
+  --base-backdrop-blur: blur(8px);
+}
+
