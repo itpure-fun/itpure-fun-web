@@ -86,9 +86,9 @@ defineExpose({
             全部
           </div>
           <div 
-            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap" 
+            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 cursor-pointer whitespace-nowrap custom-tags" 
             :class='tagId == item.id ? "text-white bg-black" : ""'
-            :style='tagId == item.id ? "" : "background-color: " + item.color + "; color: " + item.textcolor + ";"'
+            :style='tagId == item.id ? "" : "background-color: " + item.color + "; color: " + item.textcolor + ";"' 
             v-for="(item, index) in tagStore.tagList" :key="index">
             {{ item.title }}
           </div>
@@ -99,7 +99,8 @@ defineExpose({
     <div class="flex flex-col items-center mt-10 c-2xl:w-4/5 justify-center">
       <div class="grid grid-auto-rows grid-cols-4 w-full gap-5 c-lg:grid-cols-4 c-md:grid-cols-3 c-sm:grid-cols-2 c-xs:grid-cols-1">
         
-        <div v-if="productStore.productLoadFinish" v-for="(item, index) in productStore.productList" :key="index" class="flex flex-col border-solid rounded-md w-full h-[170px] border-[1px] bg-white border-gray-200 p-3">
+        <div v-if="productStore.productLoadFinish" v-for="(item, index) in productStore.productList" :key="index" @click="clickProduct(item.id, item.link)" class="relative flex flex-col cursor-pointer border-solid rounded-md w-full h-[170px] border-[1px] bg-white border-gray-200 p-3 custom-item-hover">
+
           <div class="flex items-center">
             <el-image :src="item.logo" class="w-10 h-10 min-h-[3rem] min-w-[3rem] rounded-full" lazy></el-image>
             <div class="flex justify-between ml-2 w-full">
@@ -137,7 +138,7 @@ defineExpose({
             </div>
             
             <div class="flex items-center">
-              <el-icon @click="clickProduct(item.id, item.link)" class="cursor-pointer">
+              <el-icon class="cursor-pointer">
                   <svg t="1723709446546" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18691" width="200" height="200"><path d="M892 928.1H134c-19.9 0-36-16.1-36-36v-758c0-19.9 16.1-36 36-36h314.1c19.9 0 36 16.1 36 36s-16.1 36-36 36H170v686h686V579.6c0-19.9 16.1-36 36-36s36 16.1 36 36v312.5c0 19.9-16.1 36-36 36z" fill="#333333" p-id="18692"></path><path d="M927.9 131.6v-0.5c-0.1-1.7-0.4-3.3-0.7-4.9 0-0.1 0-0.2-0.1-0.3-0.4-1.7-0.9-3.3-1.5-4.9v-0.1c-0.6-1.6-1.4-3.1-2.2-4.6 0-0.1-0.1-0.1-0.1-0.2-0.8-1.4-1.7-2.8-2.7-4.1-0.1-0.1-0.2-0.3-0.3-0.4-0.5-0.6-0.9-1.1-1.4-1.7 0-0.1-0.1-0.1-0.1-0.2-0.5-0.6-1-1.1-1.6-1.6l-0.4-0.4c-0.5-0.5-1.1-1-1.6-1.5l-0.1-0.1c-0.6-0.5-1.2-1-1.9-1.4-0.1-0.1-0.3-0.2-0.4-0.3-1.4-1-2.8-1.8-4.3-2.6l-0.1-0.1c-1.6-0.8-3.2-1.5-4.9-2-1.6-0.5-3.3-1-5-1.2-0.1 0-0.2 0-0.3-0.1l-2.4-0.3h-0.3c-0.7-0.1-1.3-0.1-2-0.1H640.1c-19.9 0-36 16.1-36 36s16.1 36 36 36h165L487.6 487.6c-14.1 14.1-14.1 36.9 0 50.9 7 7 16.2 10.5 25.5 10.5 9.2 0 18.4-3.5 25.5-10.5L856 221v162.8c0 19.9 16.1 36 36 36s36-16.1 36-36V134.1c0-0.8 0-1.7-0.1-2.5z" fill="#333333" p-id="18693"></path></svg>
               </el-icon>
             </div>
@@ -156,4 +157,10 @@ defineExpose({
 </template>
 
 <style scoped>
+.custom-item-hover{
+  @apply hover:border-black hover:shadow-[5px_5px_0_rgba(0,0,0,1)] transition-shadow duration-150 ease-linear
+}
+.custom-tags:hover{
+  @apply !bg-black !text-white
+}
 </style>

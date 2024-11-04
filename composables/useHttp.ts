@@ -49,6 +49,15 @@ class HttpRequest {
                     // @ts-ignore
                     options.headers.set('Authorization', 'Bearer ' + userStore.token||null)
                 },
+                //响应拦截器
+                onResponse({ request, response, options })  {
+                    if (response._data.code == 401) {
+                        //登录失效
+                        userStore.token = ''
+                        response._data.message = "登录失效"
+
+                    }
+                },
                 ...options,
             };
 

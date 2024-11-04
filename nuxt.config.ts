@@ -10,13 +10,13 @@ export default defineNuxtConfig({
   runtimeConfig: {
     //只能在服务端期间获取到
     //serverText: 'text',
+    
 
     //公开，客户端也能获取到
     public: {
-      // baseURL: 'http://127.0.0.1:9501',
-      baseURL: 'https://www.itpure.fun/api',
+      baseURL: process.env.BASE_URL,
 
-      title: 'ITPURE.FUN',
+      title: process.env.BASE_TITLE,
     }
   },
   imports: {
@@ -26,6 +26,16 @@ export default defineNuxtConfig({
     ]
   },
   app: {
+    head: {
+      htmlAttrs: {
+        lang: "zh-CN"
+      },
+      script: [
+        {
+          src: process.env.ANALYSIS
+        }
+      ]
+    }
   },
   css: [
     '~/assets/css/main.css',

@@ -19,4 +19,4 @@ export const productCateListAPi = (data: object) => useHttp.get(API.PRODUCT_CATE
 })
 export const productListAPi = (data: object) => useHttp.get(API.PRODUCT_LIST, data)
 export const productAddClickAPi = (id: Number, data: object) => useHttp.put(API.PRODUCT_ADD_CLICK + '/' + id, data)
-export const productSubmitApi = (data: SubmitProduct) => useHttp.get(API.PRODUCT_SUBMIT, data)
+export const productSubmitApi = (data: SubmitProduct) => useHttp.post(API.PRODUCT_SUBMIT, data)
