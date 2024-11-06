@@ -32,7 +32,7 @@ export default defineNuxtConfig({
       },
       script: [
         {
-          src: process.env.ANALYSIS
+          innerHTML: process.env.ANALYSIS
         }
       ]
     }
@@ -47,6 +47,8 @@ export default defineNuxtConfig({
       preprocessorOptions: {
         scss: {
           //可引入多个：@use "~/assets/css/main.css" as *;@use "~/assets/css/main.css" as *; @use ...
+          //更改elementplus主题变量
+          additionalData: '@use "~/assets/css/element-variables.scss" as element;' 
         }
       }
     },
@@ -60,6 +62,10 @@ export default defineNuxtConfig({
         iconDirs: [path.resolve(process.cwd(), "assets/images/svg")],
       }),
     ]
+  },
+  //elementplus config
+  elementPlus: {
+    importStyle: 'scss',
   },
   devtools: { enabled: true },
   modules: [

@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import { useCommonStore } from '~/store/modules/common';
 const productStore = useProductStore()
 const keyword = ref('')
+const commonStore = useCommonStore()
 //search
 const search = async () => {
+  commonStore.isNavBoxItemLoading = true
   await productStore.getProductList({
     title: keyword.value
   })
+  commonStore.isNavBoxItemLoading = false
 }
 defineExpose({
   

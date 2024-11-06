@@ -23,7 +23,7 @@ onMounted(() => {
 
     <el-backtop :bottom="100" :right="20">
       <div class="flex items-center">
-        <el-icon color="#F7BA1E"><ElIconCaretTop /></el-icon>
+        <el-icon color="#000"><ElIconCaretTop /></el-icon>
       </div>
     </el-backtop>
 

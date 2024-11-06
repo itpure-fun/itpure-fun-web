@@ -36,17 +36,17 @@ onMounted(() => {
         <div class="grid grid-cols-3 gap-10">
           <div>
             <div class="font-bold">产品</div>
-            <div class="mt-2 cursor-pointer"><el-text @click="goto('https://tools.ranblogs.com/')">Tools-Web</el-text></div>
+            <div class="mt-2 cursor-pointer hover-black-text"><el-text @click="goto('https://tools.ranblogs.com/')">Tools-Web</el-text></div>
           </div>
           <div>
             <div class="font-bold">关于</div>
-            <div class="mt-2 cursor-pointer"><el-text @click="goRouter('/about')">关于网站</el-text></div>
-            <div class="mt-2 cursor-pointer"><el-text @click="goRouter('/changelog')">更新日志</el-text></div>
+            <div class="mt-2 cursor-pointer hover-black-text"><el-text @click="goRouter('/about')">关于网站</el-text></div>
+            <div class="mt-2 cursor-pointer hover-black-text"><el-text @click="goRouter('/changelog')">更新日志</el-text></div>
           </div>
           <div>
             <div class="font-bold">信息</div>
-            <div class="mt-2 cursor-pointer"><el-text @click="goRouter('/privacy')">隐私政策</el-text></div>
-            <div class="mt-2 cursor-pointer"><el-text  @click="goRouter('/terms')">服务条款</el-text></div>
+            <div class="mt-2 cursor-pointer hover-black-text"><el-text @click="goRouter('/privacy')">隐私政策</el-text></div>
+            <div class="mt-2 cursor-pointer hover-black-text"><el-text  @click="goRouter('/terms')">服务条款</el-text></div>
           </div>
         </div>
       </div>
@@ -64,4 +64,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.hover-black-text .el-text{
+  @apply hover:text-black
+}
 </style>

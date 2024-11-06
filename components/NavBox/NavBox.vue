@@ -1,22 +1,9 @@
 <script setup lang="ts">
+import { useCommonStore } from '~/store/modules/common';
 import { goto } from '~/utils/url'
 const productStore = useProductStore()
 const tagStore = useTagStore()
-
-// const showType = ref('all')
-
-
-// const selectOptions = [
-//   {
-//     value: 1,
-//     label: '最新收录',
-//   },
-//   {
-//     value: 2,
-//     label: '热门产品',
-//   },
-// ]
-
+const commonStore = useCommonStore()
 
 const tagId = ref(0)
 const selectSort = ref(1)
@@ -81,12 +68,12 @@ defineExpose({
     <div class="flex items-center ">
         <div class="flex flex-wrap">
           <div 
-            @click="clickTag(0)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap" 
+            @click="clickTag(0)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap duration-150 ease-linear" 
             :class="tagId == 0 ? 'text-white bg-black' : 'bg-gray-200'">
             全部
           </div>
           <div 
-            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 cursor-pointer whitespace-nowrap custom-tags" 
+            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 cursor-pointer whitespace-nowrap custom-tags duration-150 ease-linear" 
             :class='tagId == item.id ? "text-white bg-black" : ""'
             :style='tagId == item.id ? "" : "background-color: " + item.color + "; color: " + item.textcolor + ";"' 
             v-for="(item, index) in tagStore.tagList" :key="index">
@@ -96,7 +83,7 @@ defineExpose({
     </div>
 
 
-    <div class="flex flex-col items-center mt-10 c-2xl:w-4/5 justify-center">
+    <div class="flex flex-col items-center mt-10 c-2xl:w-4/5 justify-center" v-loading="commonStore.isNavBoxItemLoading">
       <div class="grid grid-auto-rows grid-cols-4 w-full gap-5 c-lg:grid-cols-4 c-md:grid-cols-3 c-sm:grid-cols-2 c-xs:grid-cols-1">
         
         <div v-if="productStore.productLoadFinish" v-for="(item, index) in productStore.productList" :key="index" @click="clickProduct(item.id, item.link)" class="relative flex flex-col cursor-pointer border-solid rounded-md w-full h-[170px] border-[1px] bg-white border-gray-200 p-3 custom-item-hover">
