@@ -43,7 +43,6 @@ export const useUserStore = defineStore('user', {
     },
     //logout
     async logout() {
-      if (import.meta.client) await nextTick() 
       //发送请求
       const result: any = await logoutApi({})
       if (result.code == 200) {
@@ -102,7 +101,7 @@ export const useUserStore = defineStore('user', {
     //获取用户信息
     async userInfo() {
       try {
-        if (import.meta.client) await nextTick() 
+          //if (import.meta.client) await nextTick() 
           if (!this.isLogin()) {
             return
           }

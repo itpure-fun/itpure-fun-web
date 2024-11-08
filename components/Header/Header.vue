@@ -56,7 +56,7 @@ onMounted(() => {
 
 
 
-        <div class="ml-5 flex items-center cursor-pointer" @click="loginShow" v-if="!userStore.isLogin()">
+        <div class="ml-2 c-xs:ml-0 flex items-center cursor-pointer" @click="loginShow" v-if="!userStore.isLogin()">
           <el-button  text>登录<el-icon><ElIconRight /></el-icon></el-button>
         </div>
         <div class="ml-5 flex items-center" v-else>

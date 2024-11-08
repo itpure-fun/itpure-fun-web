@@ -8,7 +8,9 @@ const commonStore = useCommonStore()
 const tagId = ref(0)
 const selectSort = ref(1)
 
-const loadmore = () => {
+const isLoadmore = ref(false)
+const loadmore = async () => {
+  isLoadmore.value = true
   let nextPage = 0;
   if (productStore.productListPageInfo.currentPage >= productStore.productListPageInfo.totalPage) {
     nextPage = productStore.productListPageInfo.totalPage
@@ -18,21 +20,26 @@ const loadmore = () => {
     nextPage = productStore.productListPageInfo.currentPage + 1;
   }
   
-  productStore.getProductList({
+  await productStore.getProductList({
     loadmore: true,
     page: nextPage,
     tag_id: tagId.value,
     sort: selectSort.value,
   })
+  isLoadmore.value = false
 }
 
-const clickTag = (cId: number) => {
+const clickTag = async (cId: number) => {
+  commonStore.isNavBoxItemLoading = true
+
   tagId.value = cId
-  productStore.getProductList({
+  await productStore.getProductList({
     // cate_id: cateId.value,
     sort: selectSort.value,
     tag_id: tagId.value
   })
+
+  commonStore.isNavBoxItemLoading = false
 }
 
 const changeSelect = () => {
@@ -65,15 +72,15 @@ defineExpose({
 
 <template>
   <div class="p-5 mt-5 flex flex-col items-center">
-    <div class="flex items-center ">
+    <div class="flex items-center c-2xl:w-4/5">
         <div class="flex flex-wrap">
           <div 
-            @click="clickTag(0)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap duration-150 ease-linear" 
+            @click="clickTag(0)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold mr-2 hover:text-white hover:bg-black cursor-pointer whitespace-nowrap duration-150 ease-linear" 
             :class="tagId == 0 ? 'text-white bg-black' : 'bg-gray-200'">
             全部
           </div>
           <div 
-            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold ml-2 cursor-pointer whitespace-nowrap custom-tags duration-150 ease-linear" 
+            @click="clickTag(item.id)" class="mt-2 pl-2 pr-2 pt-1 pb-1 rounded-md font-bold mr-2 cursor-pointer whitespace-nowrap custom-tags duration-150 ease-linear" 
             :class='tagId == item.id ? "text-white bg-black" : ""'
             :style='tagId == item.id ? "" : "background-color: " + item.color + "; color: " + item.textcolor + ";"' 
             v-for="(item, index) in tagStore.tagList" :key="index">
@@ -136,7 +143,8 @@ defineExpose({
       </div>
 
       <div class="flex justify-center mt-5" v-if="productStore.productListPageInfo.totalPage - productStore.productListPageInfo.currentPage > 0">
-        <el-button text bg @click="loadmore">点击加载更多</el-button>
+        <el-button text bg @click="loadmore" v-if="isLoadmore == false">点击加载更多</el-button>
+        <el-button text bg loading v-else>点击加载更多</el-button>
       </div>
     </div>
   </div>

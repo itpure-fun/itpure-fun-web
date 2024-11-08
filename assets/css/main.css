@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+#nprogress .bar {
+  @apply !bg-black
+}
+
 :root{
   --base-white: #fff;
   --base-gray: #fff;

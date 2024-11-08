@@ -15,7 +15,6 @@ export const useProductStore = defineStore('product', {
   actions: {
     async getProductCateList(params: any) {
       try {
-        if (import.meta.client) await nextTick() 
         const result:any = await productCateListAPi(params)
         if (result.code == 200) {
           this.cateList = result.data
@@ -30,7 +29,6 @@ export const useProductStore = defineStore('product', {
     },
     async getProductList(params: any) {
       try {
-        if (import.meta.client) await nextTick() 
         const result:any = await productListAPi(params)
         if (result.code == 200) {
           if (params.loadmore == true) {
@@ -50,7 +48,6 @@ export const useProductStore = defineStore('product', {
 
     },
     async addClick(id: any) {
-      if (import.meta.client) await nextTick() 
       const result:any = await productAddClickAPi(id, {})
       if (result.code == 200) {
         return true;
@@ -59,7 +56,6 @@ export const useProductStore = defineStore('product', {
       }
     },
     async submitProduct(params: any) {
-      if (import.meta.client) await nextTick() 
       const result:any = await productSubmitApi(params)
       // console.log('---')
       // console.log(result.message)

@@ -13,7 +13,6 @@ export const useConfigStore = defineStore('config', {
   actions: {
     async getConfigByCode(params: any) {
       try {
-        if (import.meta.client) await nextTick()
         const result:any = await getConfigByCodeApi(params)
         if (result.code == 200) {
           this.configInfo = result.data

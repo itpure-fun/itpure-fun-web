@@ -14,7 +14,7 @@ export default {
     extend: {},
     screens: {
       // 自定义响应式尺寸
-      'c-xs': {'max': '500px'},
+      'c-xs': {'max': '500px'}, // < 500px
       'c-sm': {'min': '500px'},
       'c-md': {'min': '768px'},
       'c-lg': {'min': '1024px'},
