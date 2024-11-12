@@ -89,10 +89,6 @@ export default defineNuxtConfig({
         target: process.env.NUXT_KINGBAL_PROXY_PATH,    // 目标后端API地址
         changeOrigin: true,
       },
-      "/v1": {
-        target: process.env.NUXT_KINGBAL_PROXY_PATH,    // 目标后端API地址
-        changeOrigin: true,
-      }
     }
   },
   experimental: {

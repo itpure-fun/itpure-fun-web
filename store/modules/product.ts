@@ -29,6 +29,7 @@ export const useProductStore = defineStore('product', {
     },
     async getProductList(params: any) {
       try {
+        if (import.meta.client) await nextTick() 
         const result:any = await productListAPi(params)
         if (result.code == 200) {
           if (params.loadmore == true) {

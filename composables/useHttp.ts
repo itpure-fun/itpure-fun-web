@@ -31,7 +31,29 @@ class HttpRequest {
         return new Promise(async (resolve, reject) => {
             // URL 基地址
             const runtimeConfig = useRuntimeConfig()
-            const BASE_URL = runtimeConfig.public.baseURL;
+
+            // 处理：本地docker环境中客户端发送请求需要将容器名转换成ip
+            let baseUrl = runtimeConfig.public.baseURL
+            if (import.meta.client) {
+                let pattern = 'http://nginx';
+                let replacement = 'http://127.0.0.1:80';
+                if (baseUrl.indexOf(pattern) !== -1) {
+                    baseUrl = baseUrl.replace(pattern, replacement)
+                }
+            }
+
+            // BASE_URL
+            const BASE_URL = baseUrl;
+
+            // if (import.meta.server) {
+            //     console.log('server url---')
+            //     console.log(BASE_URL)
+            // }
+
+            // if (import.meta.client) {
+            //     console.log('client url---')
+            //     console.log(BASE_URL)
+            // }
             
             //userStore
             const userStore = useUserStore()
@@ -40,6 +62,7 @@ class HttpRequest {
             const newOptions: UseFetchOptions<T> = {
                 baseURL: BASE_URL,
                 method,
+                server: true,
                 //key
                 key: uuid(),    
                 //请求拦截器
@@ -71,8 +94,10 @@ class HttpRequest {
                 newOptions.body = data;
             }
 
+            // console.log(url)
+
             // 发送请求
-            useFetch(url, newOptions)
+            await useFetch(url, newOptions)
                 .then((res) => {
                     // console.log('data---')
                     // console.log(res)
