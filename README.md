@@ -1,75 +1,55 @@
-# Nuxt 3 Minimal Starter
+<div align="center">
+  <pre>
+  _____ _______ _____  _    _ _____  ______      ______ _    _ _   _ 
+ |_   _|__   __|  __ \| |  | |  __ \|  ____|    |  ____| |  | | \ | |
+   | |    | |  | |__) | |  | | |__) | |__ ______| |__  | |  | |  \| |
+   | |    | |  |  ___/| |  | |  _  /|  __|______|  __| | |  | | . ` |
+  _| |_   | |  | |    | |__| | | \ \| |____     | |    | |__| | |\  |
+ |_____|  |_|  |_|     \____/|_|  \_\______|    |_|     \____/|_| \_|
+  </pre>
+  <p>  专注收集和分享IT程序员互联网工具、资源、产品 </p>
+</div>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 介绍
 
-## Setup
+> 此仓库是`ITPURE-FUN`的前台代码
 
-Make sure to install the dependencies:
+> 主要用于收录实用的程序员开发工具，资源和相关的产品等
 
-```bash
-# npm
-npm install
+## 功能展示
 
-# pnpm
-pnpm install
+在线站点：<a href="https://itpure.fun" target="_blank">ITPURE.FUN</a>
 
-# yarn
-yarn install
+## 部署
 
-# bun
-bun install
+- Docker Compose部署(推荐) <a href="https://github.com/itpure-fun/itpure-fun-deploy/blob/main/README.md" target="_blank">查看文档</a>
+
+## 安装和使用
+
+- 获取代码
+
+```shell
+git clone https://github.com/itpure-fun/itpure-fun-web.git
 ```
 
-## Development Server
+- 安装依赖
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```shell
+cd itpure-fun-web && pnpm install
 ```
 
-## Production
+- 运行
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+```shell
+pnpm dev
 ```
 
-Locally preview production build:
+- 打包
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```shell
+pnpm build
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## 免责声明
+
+本软件不得用于开发违反国家有关政策的相关软件和应用，若因使用本软件造成的一切法律责任均与 `itpure-fun-web`无关
